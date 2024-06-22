@@ -40,7 +40,7 @@ namespace NewApp.Models
         // New properties for other organization
         public string otherOrganization { get; set; } = "0";
 
-       
+        public string SelectedOptionTimestamps { get; set; } = "0";
 
         public string SelectedOptions { get; set; } = "0";
 
@@ -54,7 +54,15 @@ namespace NewApp.Models
 
         public string transactionId { get; set; } = "0";
 
+        public int rating { get; set; } = 0;
 
+        public string mathScience  { get; set; } = "0";
+
+        public string storedTestCode { get; set; } = "0";
+
+        public string upiPhoneNumber { get; set; } = "0";
+
+        public string amountPaid { get; set; } = "0";
     }
 
 }

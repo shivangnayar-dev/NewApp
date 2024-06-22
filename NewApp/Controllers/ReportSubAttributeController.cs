@@ -1,5 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using NewApp.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace NewApp.Controllers
 {
@@ -13,39 +16,33 @@ namespace NewApp.Controllers
             _context = context;
         }
 
-[HttpPost]
+        [HttpPost]
         [Route("CheckreportIdValidity")]
         public IActionResult CheckreportIdValidity([FromBody] ReportSubAttribute reportSubAttribute)
         {
             bool isValid = CheckTestCodeValidityInDatabase(reportSubAttribute.ReportId);
             Dictionary<string, Dictionary<string, Dictionary<int, List<object>>>> assessmentSubAttributesData = GetAssessmentSubAttributesBy(reportSubAttribute.ReportId);
 
-            // Randomly select questions
-            var (selectedQuestionIds, combinedQuestions) = CombineAndReturnIdsAndQuestions(assessmentSubAttributesData);
+            // Randomly select questions along with their sub-attributes data
+            var selectedQuestionsWithSubAttributes = CombineAndReturnIdsAndQuestions(assessmentSubAttributesData);
 
             // Combine selected questions
-            var optionsAndAnswerIds = GetOptionsAndAnswerIdsWithQuestions(selectedQuestionIds);
-            var questionTextList = FetchQuestionData(selectedQuestionIds);
+            var optionsAndAnswerIds = GetOptionsAndAnswerIdsWithQuestions(selectedQuestionsWithSubAttributes.Select(sq => sq.QuestionId).ToList());
+            var questionTextList = FetchQuestionData(selectedQuestionsWithSubAttributes.Select(sq => sq.QuestionId).ToList());
 
             // Fetch AssessmentSubAttribute, CountofQuestiontoDisplay, and QuestionCount
-            var assessmentSubAttributes = assessmentSubAttributesData.Keys.Select(subAttribute =>
+            var assessmentSubAttributes = selectedQuestionsWithSubAttributes.Select(sq =>
             {
-                var subAttributeData = assessmentSubAttributesData[subAttribute];
-                var countOfQuestionToDisplay = subAttributeData.Values.Last().Keys.Last();
-                var questionCount = subAttributeData.Values.Last().Values.Last()[0]; // Assuming there's at least one question in the subAttribute
-
-                // Extract selected questions for the current AssessmentSubAttribute
-                var selectedQuestionsForSubAttribute = combinedQuestions
-                    .Where(kv => selectedQuestionIds.Contains(kv.Key))
-                    .ToDictionary(kv => kv.Key.ToString(), kv => kv.Value);
+                var countOfQuestionToDisplay = sq.SubAttributesData.Values.Last().Keys.Last();
+                var questionCount = sq.SubAttributesData.Values.Last().Values.Last()[0]; // Assuming there's at least one question in the subAttribute
 
                 return new
                 {
-                    AssessmentSubAttribute = subAttribute,
+                    AssessmentSubAttribute = sq.SubAttributesData.Keys.Last(),
                     CountofQuestiontoDisplay = countOfQuestionToDisplay,
                     QuestionCount = questionCount,
-                    SelectedQuestionsCount = selectedQuestionsForSubAttribute.Count, // Add this line to get the count of selected questions
-                    SelectedQuestions = selectedQuestionsForSubAttribute
+                    SelectedQuestionsCount = 1, // Each selected question represents one count
+                    SelectedQuestions = new Dictionary<string, string> { { sq.QuestionId.ToString(), sq.Question } }
                 };
             }).ToList();
 
@@ -62,15 +59,19 @@ namespace NewApp.Controllers
             Item2 = opt.AnswerId,
             Item3 = opt.SequenceOfDisplay,
             Item4 = opt.MarksTotal
-        }).ToList()
+        }).ToList(),
+        subid = selectedQuestionsWithSubAttributes
+                    .Where(sq => sq.Item2 == kvp.Value.Question) // Find corresponding item in selectedQuestionsWithSubAttributes
+                    .Select(sq => sq.Item3.Keys.First()) // Extract the key from the first item in Item3
+                    .FirstOrDefault() // Get the first key or default value if not found
     });
+
             // Check if the sum of countToDisplay of all attributes is equal to the length of combinedQuestions
             int sumCountToDisplay = assessmentSubAttributesData.Values
                 .SelectMany(subAttributeData => subAttributeData.Values)
                 .Sum(questionData => questionData.Keys.First());
 
-            bool isCountMatch = sumCountToDisplay == combinedQuestions.Count;
-
+            bool isCountMatch = sumCountToDisplay == selectedQuestionsWithSubAttributes.Count;
 
             return Json(new
             {
@@ -78,7 +79,12 @@ namespace NewApp.Controllers
                 assessmentSubAttributes = assessmentSubAttributes,
                 questionOptionsAndAnswers = formattedOptionsAndAnswerIds,
                 isCountMatch = isCountMatch,
-                 sumCountToDisplay = sumCountToDisplay
+                sumCountToDisplay = sumCountToDisplay,
+                selectedQuestionsWithSubAttributes = selectedQuestionsWithSubAttributes.Select(sq => new
+                {
+                    Item2 = sq.Item2, // Extracting Item2
+                    Item3 = sq.Item3// Extracting the key from the first item in Item3
+                })
             });
         }
 
@@ -125,7 +131,6 @@ namespace NewApp.Controllers
 
             return questionOptionsAndAnswers;
         }
-
 
         private List<string> FetchQuestionData(List<Guid> selectedQuestionIds)
         {
@@ -204,25 +209,21 @@ namespace NewApp.Controllers
             return _context.ReportSubAttributes.Any(tc => tc.ReportId == ReportId);
         }
 
-
-        private (List<Guid> selectedQuestionIds, Dictionary<Guid, string> combinedQuestions) CombineAndReturnIdsAndQuestions(Dictionary<string, Dictionary<string, Dictionary<int, List<object>>>> assessmentSubAttributesData)
+        private List<(Guid QuestionId, string Question, Dictionary<string, Dictionary<int, List<object>>> SubAttributesData)> CombineAndReturnIdsAndQuestions(Dictionary<string, Dictionary<string, Dictionary<int, List<object>>>> assessmentSubAttributesData)
         {
-            List<Guid> selectedQuestionIds = new List<Guid>();
-            Dictionary<Guid, string> combinedQuestions = new Dictionary<Guid, string>();
+            List<(Guid QuestionId, string Question, Dictionary<string, Dictionary<int, List<object>>> SubAttributesData)> selectedQuestionsWithSubAttributes = new List<(Guid QuestionId, string Question, Dictionary<string, Dictionary<int, List<object>>> SubAttributesData)>();
 
-            int totalQuestionCount = assessmentSubAttributesData.Values
-                .SelectMany(subAttributeData => subAttributeData.Values)
-                .Sum(questionData => questionData.Keys.First());
-
-            foreach (var subAttributeData in assessmentSubAttributesData.Values)
+            foreach (var subAttributeData in assessmentSubAttributesData)
             {
-                foreach (var questionData in subAttributeData.Values)
-                {
-                    int countToDisplay = questionData.Keys.First();
+                var subAttributeId = subAttributeData.Key; // Get the subAttributeId
 
-                    if (questionData.ContainsKey(countToDisplay))
+                foreach (var questionData in subAttributeData.Value)
+                {
+                    int countToDisplay = questionData.Value.Keys.First();
+
+                    if (questionData.Value.ContainsKey(countToDisplay))
                     {
-                        List<object> questionsList = questionData[countToDisplay];
+                        List<object> questionsList = questionData.Value[countToDisplay];
 
                         if (questionsList.Count > 2 && questionsList[2] is Dictionary<Guid, string> subSelectedQuestions)
                         {
@@ -234,39 +235,19 @@ namespace NewApp.Controllers
 
                             foreach (var question in selectedSubset)
                             {
-                                {
-                                    selectedQuestionIds.Add(question.Key);
-                                    combinedQuestions.Add(question.Key, question.Value);
-                                }
+                                // Create the SubAttributesData dictionary containing the subAttributeId and its data
+                                var subAttributesData = new Dictionary<string, Dictionary<int, List<object>>>();
+                                subAttributesData.Add(subAttributeId, questionData.Value);
+
+                                selectedQuestionsWithSubAttributes.Add((question.Key, question.Value, subAttributesData));
                             }
                         }
                     }
                 }
             }
 
-            // Check if sum of countToDisplay of all attributes is equal to the length of combinedQuestions
-            int sumCountToDisplay = assessmentSubAttributesData.Values
-                .SelectMany(subAttributeData => subAttributeData.Values)
-                .Sum(questionData => questionData.Keys.First());
-
-            if (sumCountToDisplay == combinedQuestions.Count)
-            {
-                // Sum of countToDisplay matches the length of combinedQuestions
-                Console.WriteLine("Sum of countToDisplay matches the length of combinedQuestions.");
-            }
-            else
-            {
-                // Sum of countToDisplay does not match the length of combinedQuestions
-                Console.WriteLine("Sum of countToDisplay does not match the length of combinedQuestions.");
-            }
-
-            return (selectedQuestionIds, combinedQuestions);
+            return selectedQuestionsWithSubAttributes;
         }
-
-
-
-
-
 
     }
 }

@@ -50,8 +50,46 @@ app.UseEndpoints(endpoints =>
 
     // Your existing default route
     endpoints.MapControllerRoute(
-        name: "default",
-        pattern: "{controller=Home}/{action=Test}/{id?}");
+        name: "Test",
+        pattern: "",
+        defaults: new { controller = "Home", action = "Index" });
+    endpoints.MapControllerRoute(
+     name: "career",
+     pattern: "career",
+     defaults: new { controller = "Home", action = "career" });
+
+    endpoints.MapControllerRoute(
+        name: "Councellor",
+        pattern: "Councellor",
+         defaults: new { controller = "Home", action = "Councellor" });
+    endpoints.MapControllerRoute(
+      name: "Index",
+      pattern: "Index",
+       defaults: new { controller = "Home", action = "Index" });
+    endpoints.MapControllerRoute(
+    name: "Test",
+    pattern: "Test",
+     defaults: new { controller = "Home", action = "Test" });
+    endpoints.MapControllerRoute(
+    name: "Astro",
+    pattern: "Astro",
+     defaults: new { controller = "Home", action = "Astro" });
+    endpoints.MapControllerRoute(
+ name: "RefundPolicy",
+ pattern: "RefundPolicy",
+  defaults: new { controller = "Home", action = "RefundPolicy" });
+    endpoints.MapControllerRoute(
+ name: "AboutUs",
+ pattern: "AboutUs",
+  defaults: new { controller = "Home", action = "AboutUs" });
+
+    endpoints.MapControllerRoute(
+   name: "Privacy",
+   pattern: "Privacy",
+    defaults: new { controller = "Home", action = "Privacy" });
+
+
+
 });
 
 app.Run();

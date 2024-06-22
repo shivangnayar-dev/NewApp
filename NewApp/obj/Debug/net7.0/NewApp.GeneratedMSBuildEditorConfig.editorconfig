@@ -16,16 +16,44 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /Users/shivangnayar/Projects/NewApp/NewApp
 build_property._RazorSourceGeneratorDebug = 
 
-[/Users/shivangnayar/Projects/NewApp/NewApp/Views/Home/About.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9BYm91dC5jc2h0bWw=
+[/Users/shivangnayar/Projects/NewApp/NewApp/Views/Home/AboutUs.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9BYm91dFVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/shivangnayar/Projects/NewApp/NewApp/Views/Home/Astro.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Bc3Ryby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/shivangnayar/Projects/NewApp/NewApp/Views/Home/career.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9jYXJlZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/shivangnayar/Projects/NewApp/NewApp/Views/Home/Councellor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Db3VuY2VsbG9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/shivangnayar/Projects/NewApp/NewApp/Views/Home/Home.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Ib21lLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/shivangnayar/Projects/NewApp/NewApp/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/shivangnayar/Projects/NewApp/NewApp/Views/Home/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Mb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/shivangnayar/Projects/NewApp/NewApp/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/shivangnayar/Projects/NewApp/NewApp/Views/Home/RefundPolicy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9SZWZ1bmRQb2xpY3kuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/shivangnayar/Projects/NewApp/NewApp/Views/Home/Test.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9UZXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/shivangnayar/Projects/NewApp/NewApp/Views/Shared/Error.cshtml]

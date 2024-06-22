@@ -26,6 +26,10 @@ public class HomeController : Controller
     {
         return View();
     }
+    public IActionResult AboutUs()
+    {
+        return View();
+    }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
@@ -38,6 +42,27 @@ public class HomeController : Controller
         // Your logic for the about page
         return View();
     }
-
+    public IActionResult Home()
+    {
+        // Your logic for the about page
+        return View();
+    }
+    public IActionResult Astro()
+    {
+        return View();
+    }
+    public IActionResult Councellor()
+    {
+        return View();
+    }
+    public IActionResult career()
+    {
+        return View();
+    }
+    public IActionResult RefundPolicy()
+    {
+        return View();
+    }
+   
 }
 

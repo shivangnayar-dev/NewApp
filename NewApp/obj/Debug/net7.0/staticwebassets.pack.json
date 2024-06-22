@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets/NewApp.bundle.scp.css"
     },
     {
+      "Id": "/Users/shivangnayar/Projects/NewApp/NewApp/wwwroot/.DS_Store",
+      "PackagePath": "staticwebassets/.DS_Store"
+    },
+    {
       "Id": "/Users/shivangnayar/Projects/NewApp/NewApp/wwwroot/css/site.css",
       "PackagePath": "staticwebassets/css/site.css"
     },
@@ -13,8 +17,32 @@
       "PackagePath": "staticwebassets/favicon.ico"
     },
     {
+      "Id": "/Users/shivangnayar/Projects/NewApp/NewApp/wwwroot/js/Councellor.js",
+      "PackagePath": "staticwebassets/js/Councellor.js"
+    },
+    {
+      "Id": "/Users/shivangnayar/Projects/NewApp/NewApp/wwwroot/js/Index.js",
+      "PackagePath": "staticwebassets/js/Index.js"
+    },
+    {
+      "Id": "/Users/shivangnayar/Projects/NewApp/NewApp/wwwroot/js/career.js",
+      "PackagePath": "staticwebassets/js/career.js"
+    },
+    {
       "Id": "/Users/shivangnayar/Projects/NewApp/NewApp/wwwroot/js/site.js",
       "PackagePath": "staticwebassets/js/site.js"
+    },
+    {
+      "Id": "/Users/shivangnayar/Projects/NewApp/NewApp/wwwroot/js/site.js.save",
+      "PackagePath": "staticwebassets/js/site.js.save"
+    },
+    {
+      "Id": "/Users/shivangnayar/Projects/NewApp/NewApp/wwwroot/js/site.js.save.1",
+      "PackagePath": "staticwebassets/js/site.js.save.1"
+    },
+    {
+      "Id": "/Users/shivangnayar/Projects/NewApp/NewApp/wwwroot/js/site.js.save.2",
+      "PackagePath": "staticwebassets/js/site.js.save.2"
     },
     {
       "Id": "/Users/shivangnayar/Projects/NewApp/NewApp/wwwroot/lib/bootstrap/LICENSE",

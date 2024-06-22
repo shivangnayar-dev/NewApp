@@ -1,4 +1,64 @@
 ﻿<Properties StartupConfiguration="{04DBDFAF-213F-4F8E-B933-A4E5BC335E5D}|https">
-  <MonoDevelop.Ide.ItemProperties.NewApp FirstBuild="True" />
   <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.NewApp PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/shivangnayar/Projects/NewApp/NewApp/Controllers/ReportSubAttributeController.cs" relfile="NewApp/Controllers/ReportSubAttributeController.cs" line="209" column="1" />
+      <Breakpoint file="/Users/shivangnayar/Projects/NewApp/NewApp/Controllers/ReportSubAttributeController.cs" relfile="NewApp/Controllers/ReportSubAttributeController.cs" line="31" column="1" />
+      <Breakpoint file="/Users/shivangnayar/Projects/NewApp/NewApp/Controllers/ReportSubAttributeController.cs" relfile="NewApp/Controllers/ReportSubAttributeController.cs" line="34" column="1" />
+      <Breakpoint file="/Users/shivangnayar/Projects/NewApp/NewApp/Controllers/ReportSubAttributeController.cs" relfile="NewApp/Controllers/ReportSubAttributeController.cs" line="50" column="1" />
+      <Breakpoint file="/Users/shivangnayar/Projects/NewApp/NewApp/Controllers/ReportSubAttributeController.cs" relfile="NewApp/Controllers/ReportSubAttributeController.cs" line="72" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workbench ActiveDocument="NewApp/Controllers/candidateController.cs">
+    <Files>
+      <File FileName="NewApp/Program.cs" Line="11" Column="1" />
+      <File FileName="NewApp/appsettings.json" />
+      <File FileName="NewApp/Controllers/ReportSubAttributeController.cs" Line="195" Column="79" />
+      <File FileName="NewApp/Controllers/CoreController.cs" />
+      <File FileName="NewApp/Controllers/TestCodeController.cs" />
+      <File FileName="NewApp/wwwroot/js/site.js.save" />
+      <File FileName="NewApp/Views/Home/Index.cshtml" />
+      <File FileName="NewApp/Views/Home/AboutUs.cshtml" />
+      <File FileName="NewApp/wwwroot/js/Index.js" />
+      <File FileName="NewApp/Views/Home/Councellor.cshtml" />
+      <File FileName="NewApp/Views/Shared/_Layout.cshtml" />
+      <File FileName="NewApp/wwwroot/css/site.css" />
+      <File FileName="NewApp/Views/Home/Astro.cshtml" />
+      <File FileName="NewApp/wwwroot/js/site.js" Line="1627" Column="1" />
+      <File FileName="NewApp/Models/QuestionAnsMap.cs" />
+      <File FileName="NewApp/Models/LoginViewModel.cs" />
+      <File FileName="NewApp/Views/Home/Test.cshtml" />
+      <File FileName="NewApp/Models/CandidateDetails.cs" Line="31" Column="30" />
+      <File FileName="NewApp/Models/Core.cs" />
+      <File FileName="NewApp/wwwroot/js/Councellor.js" />
+      <File FileName="NewApp/Views/Home/career.cshtml" />
+      <File FileName="NewApp/Views/Home/Home.cshtml" />
+      <File FileName="NewApp/Views/Home/Login.cshtml" />
+      <File FileName="NewApp/wwwroot/js/career.js" />
+      <File FileName="NewApp/Controllers/candidateController.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="NewApp" expanded="True">
+            <Node name="NewApp">
+              <Node name="Controllers" expanded="True">
+                <Node name="candidateController.cs" selected="True" />
+              </Node>
+              <Node name="Models" expanded="True" />
+              <Node name="wwwroot" expanded="True">
+                <Node name="js" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>

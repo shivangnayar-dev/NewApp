@@ -34,6 +34,9 @@ namespace NewApp.Controllers
         // Get the reportId for the given code
         private string? GetReportIdByCode(string code)
         {
+
+
+
             var testCode = _context.TestCodes.FirstOrDefault(tc => tc.Code == code);
 
             if (testCode != null)

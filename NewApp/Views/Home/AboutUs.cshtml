@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "About Us";
 }
 @{
     var importUrl = "https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap";
@@ -1341,6 +1341,7 @@
                 height: 500px;
                 margin: 28px;
                 padding: 40px 30px;
+             
                 border-radius: 40px;
                 box-shadow: -6px -6px 20px rgba(255,255,255,1), 6px 6px 20px rgba(0,0,0,0.1);
             }
@@ -1737,6 +1738,21 @@
             background: #f6f6f6;
             display: flex;
         }
+        footer {
+            background-color: #f0f0f0; /* Adjust the background color as needed */
+            padding: 20px 0; /* Adjust the padding as needed */
+            text-align: center; /* Align the text to the center */
+        }
+
+        .footer-links a {
+            color: #333; /* Define the color of the links */
+            text-decoration: none; /* Remove underlines from the links */
+            margin: 0 10px; /* Add spacing between the links */
+        }
+
+            .footer-links a:hover {
+                text-decoration: underline; /* Add underline on hover */
+            }
 
             .search-container .input input {
                 width: 100%;
@@ -2184,53 +2200,25 @@
 
 
         .left-container {
+            width: 20%;
+        }
+
+        .left-container-closed {
+            margin-left: -60%;
+            width: 0;
+        }
+
+        .slide-button {
             position: fixed;
-            top: 0;
-            left: -250px;
-            width: 250px;
-            height: 100%;
-            background-color: #111;
-            transition: 0.5s;
-            overflow-y: auto;
+            top: 50%;
+            left: 29.4%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            font-size: 24px;
         }
 
-            .left-container.open {
-                left: 0;
-            }
-
-        .sidebar a {
-            padding: 10px 15px;
-            text-decoration: none;
-            font-size: 20px;
-            color: #818181;
-            display: block;
-            transition: 0.3s;
-        }
-
-            .sidebar a:hover {
-                color: #f1f1f1;
-            }
-
-        .sidebar .closebtn {
-            position: absolute;
-            top: 0;
-            right: 25px;
-            font-size: 36px;
-            margin-left: 50px;
-        }
-        /* Chat list styling */
-        .chat-list {
-            padding: 20px;
-        }
-        /* Menu icon styling */
-        .menu-icon {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            font-size: 30px;
-            cursor: pointer;
-            color: white;
-            z-index: 9999;
+        .slide-button-closed {
+            left: 0;
         }
     </style>
 }
@@ -2239,8 +2227,7 @@
 <div class="background-green"></div>
 
 <div class="main-container">
-    <span class="menu-icon" onclick="openLeftContainer()">&#9776;</span>
-    <div class="left-container" id="leftContainer">
+    <div class="left-container">
         <!-- header -->
         <div class="header">
             <div class="user-img">
@@ -2248,7 +2235,7 @@
             </div>
             <div class="nav-icons">
                 <div class="linkedin-logo-container">
-                    <a href="https://www.linkedin.com/company/pexitics.com/" target="_blank">
+                    <a href="https://www.linkedin.com/showcase/careertests/" target="_blank">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/640px-LinkedIn_logo_initials.png" alt="LinkedIn" class="nav-icon linkedin-icon">
                     </a>
                 </div>
@@ -2302,7 +2289,7 @@
             </div>
             <div class="chat-box" onclick="handlAboutUs()">
                 <div class="img-box">
-                    <img class="img-cover" src="https://github.com/shivangnayar-dev/img/blob/main/imgpsh_fullsize_anim.png" alt="">
+                    <img class="img-cover" src="https://cdn-icons-png.flaticon.com/256/732/732246.png" alt="">
                 </div>
                 <div class="chat-details">
                     <div class="text-head">
@@ -2317,7 +2304,7 @@
 
             <div class="chat-box" onclick="handleCareerExpertClick()">
                 <div class="img-box">
-                    <img class="img-cover" src="https://github.com/shivangnayar-dev/img/blob/main/imgpsh_fullsize_anim%20(1).png" alt="">
+                    <img class="img-cover" src="https://cdn-icons-png.flaticon.com/512/2643/2643491.png" alt="">
                 </div>
                 <div class="chat-details">
                     <div class="text-head">
@@ -2335,7 +2322,7 @@
             </div>
             <div class="chat-box" onclick="handleDashboard()">
                 <div class="img-box">
-                    <img class="img-cover" src="https://github.com/shivangnayar-dev/img/blob/main/imgpsh_fullsize_anim%20(2).png">
+                    <img class="img-cover" src="data:image/png;base64,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">
                 </div>
                 <div class="chat-details">
                     <div class="text-head">
@@ -2370,12 +2357,9 @@
                     <tr>
                         <td>
                             <section>
-                                <h5 class="sub-title">Welcome To CareerGraph</h5>
-                                <h1 class="">Career Guidance and Advisory &ZeroWidthSpace;</h1>
-                                <p style="padding-bottom: 10px;">Unlock the Future for Success and Happiness :)</p>
-                                <a href="https://careertests.in/AboutUs" class="btn3">
-                                    <span>Discover More</span>
-                                </a>
+                                <h5 class="sub-title">CareerGraph</h5>
+                                <h1 class="">Unlock the Future for Success and Happiness :)</h1>
+                                <p style="padding-bottom: 10px;">Since 2017, we've empowered over 50,000 youth. Utilizing cutting-edge employability benchmarks and methodologies endorsed by the World Economic Forum, we steer youth towards rewarding career paths. Our approach, inspired by US and UK practices, ensures tailored guidance for every individual. Trust CareerGraph to navigate the complexities of modern career choices, propelling you towards success.​</p>
 
                             </section>
                         </td>
@@ -2389,114 +2373,59 @@
 
 
         <!--CARDS-->
+        <!--CARDS-->
         <section class="section0" id="sections">
             <div class="card banner">
-                <h1 class="title">Our Featured Services</h1>
-                <h5 class="sub-title">Trust CareerGraph to navigate the complexities of modern career choices, propelling you towards success.</h5>
+                <h1 class="title">Our Approach</h1>
+                <h5 class="sub-title">Guiding You Towards Long-Term Success</h5>
             </div>
             <div class="card inline-photo show-on-scroll">
-                <i class="fa fa-handshake-o" aria-hidden="true"></i>
-                <h3>Career Counseling</h3>
-                <p class="sub-title">Expert guidance from counselors dedicated to your success</p>
+                <h3>Take a Test [AI]</h3>
+                <p class="sub-title">Begin with an AI-powered assessment</p>
             </div>
             <div class="card inline-photo show-on-scroll">
-                <i class="fa fa-thumbs-up" aria-hidden="true"></i>
-                <h3>International Career Assessment</h3>
-                <p class="sub-title">A comprehensive test evaluating both interests and capabilities</p>
-            </div>
-            <div class="card inline-photo show-on-scroll">
-                <i class="fa fa-line-chart" aria-hidden="true"></i>
-                <h3>Job Matching Services</h3>
-                <p class="sub-title">Matching candidates with over 2000+ job profiles, including emerging job families</p>
-            </div>
-            <div class="card inline-photo show-on-scroll">
-                <i class="fa fa-users" aria-hidden="true"></i>
-                <h3>Career Fitment Analysis</h3>
-                <p class="sub-title">Focused on ensuring fitment and long-term success in both careers and life</p>
-            </div>
-            <div class="card inline-photo show-on-scroll">
-                <i class="fa fa-comments" aria-hidden="true"></i>
-                <h3>Interview Preparation</h3>
-                <p class="sub-title">Tailored coaching and resources to excel in job interviews</p>
+                <h3>Discuss with Counselor</h3>
+                <p class="sub-title">Engage with experienced advisors for personalized guidance</p>
             </div>
         </section>
-
-
 
         <!--CONTAINER-->
-        <div class="container">
-            <table>
-                <tbody>
-                    <tr>
-                        <td>
-                            <img src="https://i.ibb.co/w4dySWD/01.webp" class="inline-photo show-on-scroll" alt="About Us">
-                        </td>
-                        <td>
-                            <h6 class="sub-title">Discover Our Company</h6>
-                            <h1 class="title">CareerGraph: Your Global Partner in Career Guidance</h1>
-                            <p>At CareerGraph, we have empowered over 50,000 youth since 2017. Utilizing cutting-edge employability benchmarks and methodologies endorsed by the World Economic Forum, we steer youth towards rewarding career paths. Our approach, inspired by practices from the US and UK, ensures tailored guidance for every individual.</p>
-                            <p>Our mission is to empower individuals with the knowledge and skills needed to thrive in today's competitive job market, leading them towards fulfilling and successful careers.</p>
-                            <a href="https://careertests.in/AboutUs" class="btn2">Discover More</a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-
-
-        <section class="slick" id="moreaboutus">
-            <div class="banner">
-                <h1 class="title">How You Can Benefit from Career Guidance</h1>
-                <h5 class="sub-title">Empowering Your Career Journey</h5>
+        <div class="container-01">
+            <div class="neumorphic-card">
+                <h2>Basic Package</h2>
+                <div class="contentBox">
+                    <p><br>INR 1000/-<br>Test online<br><a href="https://drive.google.com/file/d/1zWVethLPXxjuXWAUko0bSD0fubSutiAG/view?usp=sharing" target="_blank">Download report (Sample)</a><br>Counselor not included<br>Report help – WhatsApp/email</p>
+                    <a href="https://careertests.in/Test"><span>Buy Now</span></a>
+                </div>
             </div>
-            <table>
-                <tbody>
-                    <tr>
-                        <td>
-                            <ul>
-                                <li>
-                                    <h3>Career Counseling</h3>
-                                    <p>Receive personalized career counseling sessions with experienced professionals who are dedicated to helping you explore your interests, strengths, and goals.</p>
-                                </li>
-                                <li>
-                                    <h3>Career Assessment</h3>
-                                    <p>Undergo comprehensive career assessments to evaluate your skills, interests, and values, providing valuable insights into potential career paths.</p>
-                                </li>
-                                <li>
-                                    <h3>Career Benchmarking</h3>
-                                    <p>Access cutting-edge career benchmarking tools and methodologies endorsed by industry experts to gauge your progress and compare against industry standards.</p>
-                                </li>
-                            </ul>
-                        </td>
-                        <td>
-                            <div class="card inline-photo show-on-scroll">
-                                <div class="card_part card_part-one"></div>
-                                <div class="card_part card_part-two"></div>
-                                <div class="card_part card_part-three"></div>
-                                <div class="card_part card_part-four"></div>
-                            </div>
-                        </td>
-                        <td>
-                            <ul>
-                                <li>
-                                    <h3>Expert Guidance</h3>
-                                    <p>Benefit from expert guidance and support as you navigate your career journey, with tailored advice and resources to help you achieve your professional goals.</p>
-                                </li>
-                                <li>
-                                    <h3>Personalized Development Plans</h3>
-                                    <p>Receive personalized development plans based on your career assessment results and counseling sessions, outlining actionable steps for career advancement.</p>
-                                </li>
-                                <li>
-                                    <h3>Continuous Support</h3>
-                                    <p>Gain access to continuous support and mentorship from our team of career experts, ensuring you stay on track towards realizing your full potential.</p>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+
+            <div class="neumorphic-card">
+                <h2>Premium Package</h2>
+                <div class="contentBox">
+                    <p><br>INR 3000/-<br>Test online<br><a href="https://drive.google.com/file/d/1zWVethLPXxjuXWAUko0bSD0fubSutiAG/view?usp=sharing" target="_blank">Download report (Sample)</a><br>Counselor – Subhashini S Tripathi*<br>Report help – Career Counselor</p>
+                    <a href="https://careertests.in/Test"><span>Buy Now</span></a>
+                </div>
+            </div>
+
+            <div class="neumorphic-card">
+                <h2>Mix & Match Package</h2>
+                <div class="contentBox">
+                    <p><br>Call to discuss<br>Test online<br><a href="https://drive.google.com/file/d/1zWVethLPXxjuXWAUko0bSD0fubSutiAG/view?usp=sharing" target="_blank">Download report (Sample)</a><br>Counselor – Choose from list<br>Report help – Career Counselor</p>
+                    <a href="https://careertests.in/Test"><span>Talk to us</span></a>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <div class="footer-links">
+                <a href="https://careertests.in/Privacy" target="_blank">Privacy Policy</a>
+                <span>|</span>
+                <a href="https://careertests.in/RefundPolicy" target="_blank">Refund Policy</a>
+            </div>
+        </footer>
+
+
+
+
 
 
 
